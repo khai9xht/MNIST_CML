@@ -12,5 +12,5 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip install -r requirements.txt
-          wandb login ${{secrets.WANDB_LOGIN}}
+          wandb login ${{ secrets.WANDB_LOGIN }}
           python main.py
