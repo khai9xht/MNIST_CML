@@ -10,8 +10,7 @@ jobs:
       - name: Train MNIST model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WANDB_LOGIN_TOKEN: ${{secrets.WANDB_LOGIN}}
         run: |
           pip install -r requirements.txt
-          wandb login $WANDB_LOGIN_TOKEN
+          wandb login ${{secrets.WANDB_LOGIN}}
           python main.py
