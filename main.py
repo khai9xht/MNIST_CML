@@ -41,6 +41,7 @@ def train(args, model, device, train_loader, optimizer, epoch):
         optimizer.zero_grad()
         output = model(data)
         loss = F.nll_loss(output, target)
+        wandb.log({'nll_loss': loss.item(), "iterator": batch_idx, "epoch": epoch})
         loss.backward()
         optimizer.step()
         if batch_idx % args.log_interval == 0:
