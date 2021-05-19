@@ -113,6 +113,18 @@ def main():
         transforms.ToTensor(),
         transforms.Normalize((0.1307,), (0.3081,))
         ])
+    
+    CONFIG = {
+        "batch size": args.batch_size,
+        "test batch size": args.test_batch_size,
+        "num epochs": args.epochs, 
+        "learning rate": args.lr,
+        "gamma": args.gamma,
+        "num workers": 1
+    }
+    
+    wandb.init(project='MNIST_demo', entity='hoanggm3', config=CONFIG)
+
     dataset1 = datasets.MNIST('../data', train=True, download=True,
                        transform=transform)
     dataset2 = datasets.MNIST('../data', train=False,
