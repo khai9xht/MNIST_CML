@@ -41,7 +41,7 @@ def train(args, model, device, train_loader, optimizer, epoch):
         optimizer.zero_grad()
         output = model(data)
         loss = F.nll_loss(output, target)
-        wandb.log({'nll_loss': loss.item(), "iterator": batch_idx, "epoch": epoch})
+        wandb.log({'NLL_loss': loss.item()})
         loss.backward()
         optimizer.step()
         if batch_idx % args.log_interval == 0:
@@ -65,6 +65,8 @@ def test(model, device, test_loader):
             correct += pred.eq(target.view_as(pred)).sum().item()
 
     test_loss /= len(test_loader.dataset)
+
+    wandb.log({"Test loss": test_loss, "Accuracy": 100*correct/len(test_loader.dataset)})
 
     print('\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(
         test_loss, correct, len(test_loader.dataset),
