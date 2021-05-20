@@ -40,7 +40,7 @@ def train(args, model, device, train_loader, optimizer, epoch, config):
     total_epoch = config["num epochs"]
     batch_size = config["batch size"]
     with tqdm(
-        total=len(train_loader.dataset) // , \
+        total=len(train_loader.dataset) // batch_size, \
         desc=f"{epoch}/{total_epoch}", \
         postfix=dict
     ) as pbar:
