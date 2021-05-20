@@ -53,8 +53,6 @@ def train(args, model, device, train_loader, optimizer, epoch, config):
             optimizer.step()
             if batch_idx % args.log_interval == 0:
                 pbar.set_postfix(**{
-                    "train Epoch": epoch,
-                    "step": batch_idx * len(data) / len(train_loader.dataset),
                     "Loss": loss.item()
                 })
                 pbar.update(1)
