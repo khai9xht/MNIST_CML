@@ -41,7 +41,7 @@ def train(args, model, device, train_loader, optimizer, epoch):
     total_epoch = CONFIG["num epochs"]
     with tqdm(
         total=total_epoch, \
-        desc=f"{epoch}/{total_epoch}, \
+        desc=f"{epoch}/{total_epoch}i", \
         postfix=dict, mininterval=0.1
     ) as pbar:
         for batch_idx, (data, target) in enumerate(train_loader):
