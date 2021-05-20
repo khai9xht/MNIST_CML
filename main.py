@@ -38,8 +38,9 @@ class Net(nn.Module):
 def train(args, model, device, train_loader, optimizer, epoch, config):
     model.train()
     total_epoch = config["num epochs"]
+    batch_size = config["batch size"]
     with tqdm(
-        total=total_epoch, \
+        total=len(train_loader.dataset) // , \
         desc=f"{epoch}/{total_epoch}", \
         postfix=dict
     ) as pbar:
