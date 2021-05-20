@@ -1,4 +1,3 @@
-from __future__ import print_function
 import argparse
 import torch
 import torch.nn as nn
@@ -41,7 +40,7 @@ def train(args, model, device, train_loader, optimizer, epoch, config):
     total_epoch = config["num epochs"]
     with tqdm(
         total=total_epoch, \
-        desc=f"{epoch}/{total_epoch}i", \
+        desc=f"{epoch}/{total_epoch}", \
         postfix=dict, mininterval=0.1
     ) as pbar:
         for batch_idx, (data, target) in enumerate(train_loader):
