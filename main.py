@@ -36,9 +36,9 @@ class Net(nn.Module):
         return output
 
 
-def train(args, model, device, train_loader, optimizer, epoch):
+def train(args, model, device, train_loader, optimizer, epoch, config):
     model.train()
-    total_epoch = CONFIG["num epochs"]
+    total_epoch = config["num epochs"]
     with tqdm(
         total=total_epoch, \
         desc=f"{epoch}/{total_epoch}i", \
@@ -152,7 +152,7 @@ def main():
     wandb.watch(model, log="all", log_freq=100)
     scheduler = StepLR(optimizer, step_size=1, gamma=args.gamma)
     for epoch in range(1, args.epochs + 1):
-        train(args, model, device, train_loader, optimizer, epoch)
+        train(args, model, device, train_loader, optimizer, epoch, CONFIG)
         test(model, device, test_loader)
         scheduler.step()
 
