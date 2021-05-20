@@ -57,6 +57,7 @@ def train(args, model, device, train_loader, optimizer, epoch, config):
                     "Loss": loss.item()
                 })
                 pbar.update(1)
+                
                 if args.dry_run:
                     break
 
