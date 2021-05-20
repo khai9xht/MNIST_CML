@@ -83,6 +83,7 @@ def test(model, device, test_loader):
         100. * correct / len(test_loader.dataset)))
 
 
+
 def main():
     # Training settings
     parser = argparse.ArgumentParser(description='PyTorch MNIST Example')
